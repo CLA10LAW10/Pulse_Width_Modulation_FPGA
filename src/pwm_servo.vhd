@@ -3,15 +3,15 @@ use IEEE.STD_LOGIC_1164.all;
 use IEEE.NUMERIC_STD.all;
 use IEEE.MATH_REAL.all;
 
-entity pwm_sine is
+entity pwm_servo is
     port (
         clk   : in std_logic;
         reset : in std_logic;
-        rgb   : out std_logic_vector (2 downto 0)
+        servo : out std_logic
     );
 end entity;
 
-architecture Behavior of pwm_sine is
+architecture Behavior of pwm_servo is
 
     component pwm_enhanced is
         generic (
@@ -28,8 +28,9 @@ architecture Behavior of pwm_sine is
     constant resolution : integer                        := 8;
     constant dvsr       : std_logic_vector (31 downto 0) := std_logic_vector(to_unsigned(4882, 32));
 
-    signal counter       : integer;
-    signal clk_50Hz      : std_logic;
+    signal counter  : integer;
+    signal clk_50Hz : std_logic;
+    --constant clk_50Hz_half_cp : integer := 1_250_000; -- 125_000_000 / (50Hz * 2)
     constant sine_thresh : integer := 2_500_000; -- 125_000_000 / (50Hz) = 2_500_000
     signal duty_sine     : std_logic_vector (resolution downto 0);
     signal pwm_sine_reg  : std_logic;
@@ -100,7 +101,5 @@ begin
         end if;
     end process;
 
-    rgb(0) <= pwm_sine_reg;
-    rgb(1) <= '0';
-    rgb(2) <= '0';
+    servo <= pwm_sine_reg;
 end Behavior;
