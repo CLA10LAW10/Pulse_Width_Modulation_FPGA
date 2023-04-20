@@ -7,7 +7,7 @@ module pwm_rainbow(
   );
 
   parameter resolution = 8;
-  parameter grad_thresh = 1_000_000;//10_000_000;//2_499_999;
+  parameter grad_thresh = 1_000_000;
   logic [31:0] dvsr = 'd4882; // sysclk / (pwm_freq* 2**8)
 
   logic [resolution:0] red_duty; // Used to increase/decrease the duty cycle
