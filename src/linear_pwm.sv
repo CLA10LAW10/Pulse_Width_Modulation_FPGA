@@ -8,7 +8,7 @@ module linear_pwm (
 
   parameter resolution = 8;
   parameter grad_thresh = 2_499_999;
-  logic [12:0] dvsr = 'd4882; // sysclk / (pwm_freq* 2**8)
+  logic [31:0] dvsr = 'd4882; // sysclk / (pwm_freq* 2**8)
   logic [resolution:0] duty; // Use to assign a single dim value = 'd25;
   logic pwm_out1;
 

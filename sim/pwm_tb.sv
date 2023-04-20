@@ -39,10 +39,10 @@ module pwm_tb();
 
     #(CP*10)
 
-    reset = 1'b1;
-    #(CP*10)
-     reset = 1'b0;
-    #CP
+    // reset = 1'b1;
+    // #(CP*10)
+    //  reset = 1'b0;
+    // #CP
 
      //  sw = 4'b0001;
      // #(CP*delay)

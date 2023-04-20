@@ -42,7 +42,7 @@ module pwm_enhanced #(parameter int R = 10) (
   end
 
   assign q_next = (q_reg == dvsr) ? 'b0 : q_reg + 1;
-  assign tick = (q_reg == 0) ? 1'b1 : 1'b0;
+  assign tick = (q_reg == 'b0) ? 1'b1 : 1'b0;
   assign d_next = (tick == 1'b1) ? d_reg + 1 : d_reg;
   assign d_ext = {1'b0, d_reg};
 
